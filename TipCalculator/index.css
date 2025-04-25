@@ -1,0 +1,245 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap'); */
+
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+button {
+    cursor: pointer;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(195,227,227);
+    flex-direction: column;
+}
+
+.heading{
+    font-size: 45px;
+    color: rgb(5,69,75);
+    opacity: 0.5;
+    letter-spacing: 4px;
+}
+.middle-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 300px;
+    width: 45%;
+    border-radius: 10px;
+}
+
+.middle-container > div {
+    width: 45%;
+    height: 85%;
+}
+
+ #style-text:nth-child(2){
+    
+    font-size: 50px;
+} 
+
+/* .middle-container > span{
+    font-size: 10px;
+    font-family: 'Google Sans', 'Product Sans', 'Roboto', sans-serif;
+    
+} */
+.inner-container2 > div {
+    width: 100%;
+    height: 40%; 
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    justify-content: space-between;
+    
+}
+
+.operation-buttons button {
+    background-color: rgb(41,193,171);
+    opacity: 0.5;
+    color: white;
+    border-radius: 10px;
+    padding: 7px;
+    outline: none;
+    border: none;
+}
+
+.bill-container > span,.select-tip-container > span,.number-of-people-container >span{
+    font-size: 14px;
+}
+
+.tip-amount-container  span:first-child,.total-amount-container span:first-child{
+font-size: 14px;
+color: white;
+}
+.tip-amount-container span:last-child, .total-amount-container span:last-child{
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(41,193,171);
+}
+.inner-container1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+.bill-container{
+    display:flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.button-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: row;
+    row-gap: 10px;
+    
+    /* border: 2px dashed red; */
+    
+}
+.button-container > input{
+    width: 70px;
+    height: 30px;
+    font-size: 20px;
+    color:  rgb(5,69,75);
+    outline: none;
+    border: none;
+    background-color:rgba(195,227,227,0.3);
+    
+}
+.button-container > button{
+    width: 70px;
+    height: 30px;
+    /* background-color:rgb(5,69,75); */
+    color: white;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+}
+.button-container > button:hover {
+    background-color: rgb(41,193,171);
+    transition: all 0.2s 1s ease-in-out;
+}
+.number-of-people-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    
+}
+.selected-button {
+    background-color: blue;
+}
+/* .number-of-people-container > div{
+    height: 20px;
+    width: 160px;
+} */
+.select-tip-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    
+}
+
+.tip-amount-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.inner-container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(5,69,75);
+    /* column-gap: 10px; */
+    padding: 20px;
+    border-radius: 10px;
+    
+    /* background-color: gray; */
+}
+.total-amount-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#div-input-number {
+    width: 90%;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    background-color:rgb(195,227,227);
+    justify-content: space-between;
+    opacity: 0.3;
+}
+#div-input-number i {
+    width: 20%;
+    font-size: 14px;
+    /* color: red; */
+}
+#div-input-number input {
+    background-color: transparent;
+    width: 85%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: right;
+}
+.div-input-bill{
+    width: 90%;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    background-color:rgb(195,227,227);
+    justify-content: space-between;
+    opacity: 0.3;
+}
+
+.div-input-bill i {
+    width: 20%;
+    font-size: 14px;
+    /* color: red; */
+}
+
+.div-input-bill input {
+    background-color: transparent;
+    width: 85%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: right;
+}
+
+.number-error-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.number-error-div > span{
+    font-size: 12px;
+}
+
+.error-text {
+    visibility: visible;
+    color: red;
+}

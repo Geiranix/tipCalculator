@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="tipcalculator.js"></script>
+    <script
+      src="https://kit.fontawesome.com/252d767e16.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">SPLI <br />TTER</h1>
+      <div class="middle-container">
+        <div class="inner-container1">
+          <div class="bill-container">
+            <span id="bill">Bill</span>
+            <div class="div-input-bill">
+              <i class="fa-solid fa-dollar-sign"></i>
+              <input type="text" id="input-bill" placeholder="0" />
+            </div>
+          </div>
+          <div class="select-tip-container" id="style-text">
+            <span id="select-tip">Select Tip%</span>
+            <div class="button-container">
+              <button class="tip-btn" id="five-tipbtn" data-key="5">5%</button>
+              <button class="tip-btn" id="ten-tipbtn" data-key="10">10%</button>
+              <button class="tip-btn" id="fifteen-tipbtn" data-key="15">15%</button>
+              <button class="tip-btn" id="twentyfive-tipbtn" data-key="25">25%</button>
+              <button class="tip-btn" id="fifty-tipbtn" data-key="50">50%</button>
+              <input type="text" id="input-tip" placeholder="custom" />
+            </div>
+          </div>
+
+          <div class="number-of-people-container">
+            <div class="number-error-div">
+              <span id="number-of-people">Number of People</span>
+              <span class="error-text" id="error-message"></span>
+            </div>
+            <div id="div-input-number">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="input-number-of-people" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="inner-container2">
+          <div>
+            <div class="tip-amount-container" id="style-text">
+              <span id="tip-amount-text"
+                >Tip Amount <br />
+                /person</span
+              >
+              <span id="tip-amount">$0.00</span>
+            </div>
+
+            <div class="total-amount-container" id="style-text">
+              <span id="total-amount-text"
+                >Total<br />
+                /person</span
+              >
+              <span id="total-bill">$0.00</span>
+            </div>
+          </div>
+          <div class="operation-buttons">
+            <button id="reset-btn" data-key="clear" onclick="calculateTotal()">
+              Calulate
+            </button>
+            <button id="reset-btn" data-key="clear">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
