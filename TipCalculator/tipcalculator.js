@@ -1,45 +1,71 @@
 let getElement = (id) => document.getElementById(id);
-// let getClassName = (className) => document.getElementsByClassName(className);
+
 billAmount = getElement("input-bill");
 peopleNumber = getElement("input-number-of-people");
 tipAmount = getElement("tip-amount");
 totalPerPerson = getElement("total-bill");
 errorMessage = getElement("error-message");
+divBillContainer = getElement("div-input-id");
+customInput = getElement("input-tip");
+divPeopleInput = getElement("div-input-number");
 
 let buttons = document.getElementsByClassName("tip-btn");
 
-let selectedButtonValue = 0;
+let selectedButtonValue = null;
+let clicked = false;
 let billValue = "";
 let numOfPeople = "";
-for (const button of buttons) {
-  const value = button.dataset.key;
-  button.addEventListener(
-    "click",
-    () => {
-      if (selectedButtonValue !== 0 && value === selectedButtonValue) {
-        window.alert("You have already selected this button");
-        return;
-      }
-      selectedButtonValue = value;
-      if (value === selectedButtonValue) {
-        button.classList.add("selected-button");
-      }
-    },
-    false
-  );
+let buttonsArray = Array.from(buttons).slice(0, 6);
+for (const button of buttonsArray) {
+  let value = button.dataset.key;
+  button.addEventListener("click", () => {
+    for (const btn of buttonsArray) {
+      btn.classList.remove("selected-button");
+    }
+    button.classList.add("selected-button");
+    selectedButtonValue = value;
+  });
 }
+
 billAmount.addEventListener(
-  "change",
+  "input",
   (e) => {
     billValue = Number.parseInt(e.target.value);
   },
   false
 );
+billAmount.addEventListener("focus", () => {
+  divBillContainer.classList.add("focus-state");
+});
+billAmount.addEventListener("blur", () => {
+  divBillContainer.classList.remove("focus-state");
+});
 
 peopleNumber.addEventListener(
   "change",
   (e) => {
     numOfPeople = Number.parseInt(e.target.value);
+  },
+  false
+);
+
+peopleNumber.addEventListener("focus", () => {
+  divPeopleInput.classList.add("focus-state");
+});
+
+peopleNumber.addEventListener("blur", () => {
+  divPeopleInput.classList.remove("focus-state");
+});
+
+customInput.addEventListener(
+  "input",
+  (e) => {
+    if (selectedButtonValue !== 0) {
+      alert("You have selected a tip button already");
+      e.target.value = "custom";
+    } else {
+      selectedButtonValue = e.target.value;
+    }
   },
   false
 );
@@ -59,139 +85,20 @@ function calculateTotal() {
   let tipPerPerson = (billValue * tipPercentageValue) / numOfPeople;
 
   tipAmount.innerText = `$${tipPerPerson.toFixed(2)}`;
-  totalPerPerson.innerText = `$${((tipPerPerson + billValue) / numOfPeople).toFixed(2)}`;
+  totalPerPerson.innerText = `$${(
+    (tipPerPerson + billValue) /
+    numOfPeople
+  ).toFixed(2)}`;
 }
 
-// dollarRemoval = (string)=>{
-//     return string.slice(1,5)
-//  }
+function reset() {
+  billAmount.value = "0";
+  peopleNumber.value = "0";
+  tipAmount.textContent = "$0.00";
+  totalPerPerson.textContent = "$0.00";
+  selectedButtonValue = null;
+  for(const btn of buttonsArray) {
+    btn.classList.remove("selected-button")
+  }
+}
 
-// const keys =document.getElementsByTagName("button")
-
-// for(const key of keys){
-// let btnValue = key.dataset.key;
-// console.log(typeof btnValue);
-
-// key.addEventListener("click", function(){
-// if(btnValue == "0.05"){
-//     console.log("this is 5%")
-//     if(billAmount.value == "" || peopleNumber.value=="" || (billAmount.value == "" || peopleNumber.value=="")){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-
-//         numberErrorMessage.style.visibility="hidden"
-//         calculatedTip = `$${eval((0.05*billAmount.value)).toFixed(2)}`
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// }
-
-// else if(btnValue == "0.1"){
-//     console.log("this is 10%")
-//     if(billAmount.value == "" || peopleNumber.value==""){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-
-//         numberErrorMessage.style.visibility="hidden"
-//         calculatedTip = `$${eval((0.1*billAmount.value)).toFixed(2)}`
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// }
-// else if(btnValue == "0.15"){
-//     console.log("this is 15%")
-//     if(billAmount.value == "" || peopleNumber.value==""){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-//         numberErrorMessage.style.visibility="hidden"
-//         calculatedTip = `$${eval((0.15*billAmount.value)).toFixed(2)}`
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// }
-// else if(btnValue == "0.25"){
-//     console.log("this is 25%")
-//     if(billAmount.value == "" || peopleNumber.value==""){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-//         numberErrorMessage.style.visibility="hidden"
-//         calculatedTip = `$${eval((0.25*billAmount.value)).toFixed(2)}`
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// }
-// else if(btnValue == "0.5"){
-//     console.log("this is 50%")
-//     if(billAmount.value == "" || peopleNumber.value==""){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-//         numberErrorMessage.style.visibility="hidden"
-//         calculatedTip = `$${eval((0.5*billAmount.value)).toFixed(2)}`
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// }
-
-// else if(btnValue == "clear"){
-//     numberErrorMessage.style.visibility="hidden"
-//     tipAmount.textContent="$0.00";
-//     totalPerPerson.textContent ="$0.00"
-
-// }
-// else{
-//     console.log("other keys have not been specified")
-// }
-// },false)
-
-// }
-
-// customInput= getElement("input-tip")
-// customInput.addEventListener("input",(event)=>{
-//     if(billAmount.value == "" || peopleNumber.value==""){
-//         numberErrorMessage.style.visibility="visible"
-//     }
-//     else {
-//         numberErrorMessage.style.visibility="hidden"
-//         eventValue = event.target.value
-//         console.log(eventValue)
-//         eventValue=Number(eventValue)
-//         calculatedTip = `$${eval(((eventValue/100)*billAmount.value)).toFixed(2)}`;
-//         tipAmount.value= calculatedTip
-//         tipAmount.textContent = tipAmount.value
-
-//         tipAmount.value = dollarRemoval(tipAmount.value);
-//         calculatedTotalPerPerson = `$${eval((Number(billAmount.value) + Number(tipAmount.value))/peopleNumber.value).toFixed(2)}`
-//         totalPerPerson.value= calculatedTotalPerPerson
-//         totalPerPerson.textContent = totalPerPerson.value
-//     }
-// },false)

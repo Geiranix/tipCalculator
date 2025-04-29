@@ -21,7 +21,7 @@
         <div class="inner-container1">
           <div class="bill-container">
             <span id="bill">Bill</span>
-            <div class="div-input-bill">
+            <div class="div-input-bill" id="div-input-id" >
               <i class="fa-solid fa-dollar-sign"></i>
               <input type="text" id="input-bill" placeholder="0" />
             </div>
@@ -38,7 +38,7 @@
             </div>
           </div>
 
-          <div class="number-of-people-container">
+          <div class="number-of-people-container" >
             <div class="number-error-div">
               <span id="number-of-people">Number of People</span>
               <span class="error-text" id="error-message"></span>
@@ -72,7 +72,7 @@
             <button id="reset-btn" data-key="clear" onclick="calculateTotal()">
               Calulate
             </button>
-            <button id="reset-btn" data-key="clear">Reset</button>
+            <button id="reset-btn" data-key="clear" onclick="reset()">Reset</button>
           </div>
         </div>
       </div>
